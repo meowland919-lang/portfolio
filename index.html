@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Apcheir Ayeh | IT, Cybersecurity &amp; Digital Media</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#081b29;--bg2:#112e42;--main:#00abf0;--text:#ededed;--muted:#b9c4cc}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',system-ui,sans-serif}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{background:var(--bg);color:var(--text);overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+:focus-visible{outline:2px solid var(--main);outline-offset:3px}
+
+header{position:fixed;top:0;left:0;width:100%;padding:22px 8%;display:flex;justify-content:space-between;align-items:center;z-index:100;background:rgba(8,27,41,.85);backdrop-filter:blur(8px)}
+.logo{font-size:28px;font-weight:800}
+.logo span{color:var(--main)}
+nav a{font-size:16px;font-weight:500;margin-left:26px;transition:.3s}
+nav a:hover,nav a.active{color:var(--main)}
+#menu{display:none;font-size:30px;background:none;border:0;color:var(--text);cursor:pointer}
+
+section{padding:110px 8% 70px;min-height:100vh}
+h2.title{font-size:40px;text-align:center;margin-bottom:50px}
+h2.title span{color:var(--main)}
+
+/* HOME */
+.home{display:flex;align-items:center;justify-content:space-between;gap:40px;position:relative}
+.home-text{max-width:600px;z-index:2}
+.home-text h1{font-size:clamp(38px,5.5vw,62px);font-weight:700;line-height:1.15}
+.home-text h3{font-size:clamp(24px,3vw,34px);color:var(--main);margin:8px 0 22px;min-height:1.4em}
+.home-text h3 .cursor{border-right:3px solid var(--main);margin-left:4px;animation:blink .8s infinite}
+@keyframes blink{50%{border-color:transparent}}
+.home-text p{color:var(--text);line-height:1.8;font-size:16px;margin-bottom:34px}
+.btns{display:flex;gap:30px;flex-wrap:wrap}
+.btn{display:inline-block;padding:14px 34px;border:2px solid var(--main);border-radius:6px;font-weight:600;font-size:17px;letter-spacing:1px;transition:.3s}
+.btn.fill{background:var(--main);color:var(--bg);box-shadow:0 0 18px rgba(0,171,240,.5)}
+.btn.fill:hover{box-shadow:none}
+.btn.line{color:var(--main)}
+.btn.line:hover{background:var(--main);color:var(--bg);box-shadow:0 0 18px rgba(0,171,240,.5)}
+.socials{display:flex;gap:22px;margin-top:40px}
+.socials a{width:46px;height:46px;border:2px solid var(--main);border-radius:50%;display:grid;place-items:center;color:var(--main);font-weight:700;transition:.3s}
+.socials a:hover{background:var(--main);color:var(--bg);box-shadow:0 0 14px var(--main)}
+
+/* PHOTO: dark, faded edges + blue paint stripes like the template */
+.photo{position:relative;width:min(46vw,560px);aspect-ratio:4/5;flex-shrink:0}
+.photo img{width:100%;height:100%;object-fit:cover;object-position:center top;filter:grayscale(1) contrast(1.25) brightness(.7);
+ -webkit-mask-image:linear-gradient(to left,#000 55%,transparent 100%),linear-gradient(to top,transparent 0,#000 25%);
+ -webkit-mask-composite:source-in;mask-image:linear-gradient(to left,#000 55%,transparent 100%),linear-gradient(to top,transparent 0,#000 25%);mask-composite:intersect}
+.photo::after{content:"";position:absolute;inset:0;pointer-events:none;mix-blend-mode:screen;opacity:.9;
+ background:
+  linear-gradient(105deg,transparent 40%,rgba(0,171,240,.95) 40% 46%,transparent 46% 50%,rgba(0,171,240,.7) 50% 52%,transparent 52% 55%,rgba(0,171,240,.5) 55% 56%,transparent 56%);
+ -webkit-mask-image:linear-gradient(to bottom,transparent 12%,#000 30%,#000 60%,transparent 78%);mask-image:linear-gradient(to bottom,transparent 12%,#000 30%,#000 60%,transparent 78%)}
+.photo .tint{position:absolute;inset:0;background:linear-gradient(160deg,rgba(8,27,41,.55),rgba(0,120,190,.35));mix-blend-mode:multiply;pointer-events:none;-webkit-mask-image:linear-gradient(to left,#000 55%,transparent 100%);mask-image:linear-gradient(to left,#000 55%,transparent 100%)}
+.photo.noimg{background:radial-gradient(circle at 60% 40%,#17475f,transparent 70%)}
+
+/* ABOUT */
+.about{background:var(--bg2)}
+.about-box{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center;max-width:1100px;margin:auto}
+.about p{line-height:1.9;color:var(--muted);margin-bottom:18px}
+.skills .bar{margin-bottom:20px}
+.skills .bar div:first-child{display:flex;justify-content:space-between;font-weight:500;margin-bottom:8px}
+.track{height:9px;background:var(--bg);border-radius:6px;overflow:hidden}
+.track i{display:block;height:100%;width:0;background:var(--main);border-radius:6px;transition:width 1.4s ease}
+
+/* SERVICES */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:30px;max-width:1100px;margin:auto}
+.card{background:var(--bg2);border:2px solid transparent;border-radius:12px;padding:36px 28px;transition:.3s}
+.card:hover{border-color:var(--main);transform:translateY(-6px)}
+.card .ico{font-size:40px;color:var(--main);margin-bottom:14px}
+.card h3{font-size:22px;margin-bottom:10px}
+.card p{color:var(--muted);line-height:1.7;font-size:15px}
+
+/* PORTFOLIO */
+.portfolio{background:var(--bg2)}
+.projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px;max-width:1100px;margin:auto}
+.proj{background:var(--bg);border-radius:12px;overflow:hidden;border:2px solid transparent;transition:.3s}
+.proj:hover{border-color:var(--main)}
+.proj .thumb{height:180px;background:linear-gradient(135deg,#0d3a55,var(--main));display:grid;place-items:center;font-size:42px;font-weight:800;opacity:.9}
+.proj div:last-child{padding:22px}
+.proj h3{margin-bottom:8px}
+.proj p{color:var(--muted);font-size:14px;line-height:1.6;margin-bottom:12px}
+.proj a{color:var(--main);font-weight:600}
+
+/* CONTACT */
+form{max-width:650px;margin:auto;display:grid;gap:18px}
+form input,form textarea{width:100%;padding:16px 18px;background:var(--bg2);border:2px solid transparent;border-radius:8px;color:var(--text);font-size:16px}
+form input:focus,form textarea:focus{border-color:var(--main);outline:0}
+form textarea{min-height:150px;resize:vertical}
+form button{cursor:pointer;background:var(--main);color:var(--bg);border:0;justify-self:start}
+#msg{color:var(--main);min-height:1.4em}
+footer{text-align:center;padding:26px;background:var(--bg2);color:var(--muted);font-size:14px}
+
+@media(max-width:900px){
+ .home{flex-direction:column-reverse;text-align:center;padding-top:120px}
+ .btns,.socials{justify-content:center}
+ .photo{width:min(86vw,420px)}
+ .about-box{grid-template-columns:1fr}
+ #menu{display:block}
+ nav{position:absolute;top:100%;left:0;width:100%;background:var(--bg);display:none;flex-direction:column;padding:10px 8% 20px}
+ nav.open{display:flex}
+ nav a{margin:14px 0}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+.socials a svg{width:22px;height:22px;fill:currentColor}
+.timeline{max-width:900px;margin:0 auto;border-left:3px solid var(--main);padding-left:30px}
+.tl{position:relative;margin-bottom:34px}
+.tl::before{content:'';position:absolute;left:-40px;top:6px;width:15px;height:15px;border-radius:50%;background:var(--main);box-shadow:0 0 10px var(--main)}
+.tl h3{font-size:20px}.tl .when{color:var(--main);font-weight:500;font-size:14px;margin:4px 0 10px}
+.tl ul{padding-left:18px;color:var(--muted);line-height:1.8;font-size:15px}
+.tl p{color:var(--muted);line-height:1.7;font-size:15px}
+.sub{font-size:26px;text-align:center;margin:60px 0 28px}
+.chips{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;max-width:900px;margin:auto}
+.chips span{background:var(--bg2);border:1px solid var(--main);border-radius:30px;padding:9px 18px;font-size:14px}
+.contact-info{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;max-width:900px;margin:0 auto 40px;text-align:center}
+.contact-info div{background:var(--bg2);border-radius:10px;padding:20px}
+.contact-info b{display:block;color:var(--main);margin-bottom:6px}
+.contact-info a:hover{color:var(--main)}
+footer .socials{justify-content:center;margin:0 0 16px}
+.proj .thumb{height:200px;padding:0;overflow:hidden;background:#0d3a55;display:block}
+.proj .thumb img{width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform .5s}
+.proj:hover .thumb img{transform:scale(1.06)}
+.proj .grid4{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:2px}
+</style>
+</head>
+<body>
+
+<header>
+  <a href="#home" class="logo">Apcheir<span>.</span></a>
+  <button id="menu" aria-label="Menu">&#9776;</button>
+  <nav id="nav">
+    <a href="#home" class="active">Home</a>
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#experience">Experience</a>
+    <a href="#portfolio">Portfolio</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<section class="home" id="home">
+  <div class="home-text">
+    <h1>Hi, I'm Apcheir Ayeh</h1>
+    <h3><span id="typed"></span><span class="cursor"></span></h3>
+    <p>IT, Cybersecurity &amp; Digital Media Specialist from Borama, Somaliland. I build clean websites, secure systems and powerful digital content that helps people and organizations grow.</p>
+    <div class="btns">
+      <a href="#contact" class="btn fill">Hire Me</a>
+      <a href="cv.pdf" class="btn line" download>Download CV</a>
+    </div>
+    <div class="socials"><a href="https://www.instagram.com/apcheirr?igsh=ZWxwam51b3B1YWNw" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5zm0 2a3 3 0 00-3 3v10a3 3 0 003 3h10a3 3 0 003-3V7a3 3 0 00-3-3H7zm5 3.5A4.5 4.5 0 1112 16.5 4.5 4.5 0 0112 7.5zm0 2A2.5 2.5 0 1012 14.5 2.5 2.5 0 0012 9.5zM17.3 6a1.1 1.1 0 110 2.2 1.1 1.1 0 010-2.2z"/></svg></a><a href="https://www.facebook.com/apcheirayeh/" target="_blank" rel="noopener" aria-label="Facebook" title="Facebook"><svg viewBox="0 0 24 24"><path d="M14 8V6.5c0-.7.2-1 1.1-1H17V2h-2.8C11.3 2 10 3.6 10 6v2H8v3.5h2V22h4v-10.5h2.8L17 8h-3z"/></svg></a><a href="https://www.youtube.com/@ayehhistory" target="_blank" rel="noopener" aria-label="YouTube - Ayeh History" title="YouTube - Ayeh History"><svg viewBox="0 0 24 24"><path d="M22 8.2s-.2-1.5-.8-2.1c-.8-.8-1.6-.8-2-.9C16.400 5 12 5 12 5s-4.400 0-7.200.2c-.4.100-1.200.1-2 .9C2.200 6.700 2 8.200 2 8.200S1.800 10 1.800 11.700v1.600c0 1.700.2 3.500.2 3.500s.2 1.500.8 2.100c.8.800 1.800.8 2.200.9 1.600.2 7 .2 7 .2s4.400 0 7.200-.2c.4-.1 1.200-.1 2-.9.6-.6.8-2.100.8-2.100s.2-1.800.2-3.500v-1.600C22.200 10 22 8.200 22 8.200zM10 15V9l5.200 3-5.200 3z"/></svg></a><a href="https://www.youtube.com/@ayehmedia" target="_blank" rel="noopener" aria-label="YouTube - Ayeh Media" title="YouTube - Ayeh Media"><svg viewBox="0 0 24 24"><path d="M22 8.2s-.2-1.5-.8-2.1c-.8-.8-1.6-.8-2-.9C16.400 5 12 5 12 5s-4.400 0-7.200.2c-.4.100-1.200.1-2 .9C2.200 6.700 2 8.200 2 8.200S1.800 10 1.800 11.700v1.600c0 1.700.2 3.500.2 3.500s.2 1.500.8 2.100c.8.800 1.800.8 2.200.9 1.600.2 7 .2 7 .2s4.400 0 7.200-.2c.4-.1 1.200-.1 2-.9.6-.6.8-2.100.8-2.100s.2-1.800.2-3.500v-1.600C22.200 10 22 8.200 22 8.200zM10 15V9l5.200 3-5.200 3z"/></svg></a><a href="https://www.tiktok.com/@ayehmedia" target="_blank" rel="noopener" aria-label="TikTok" title="TikTok"><svg viewBox="0 0 24 24"><path d="M16.600 2h-3.200v13.200a2.800 2.800 0 11-2.800-2.800c.3 0 .6 0 .8.100V9.200a6 6 0 105.200 5.900V8.600a7.300 7.300 0 004.200 1.300V6.700a4.300 4.300 0 01-4.200-4.700z"/></svg></a></div>
+  </div>
+  <!-- Beddel photo.jpg sawirkaaga -->
+  <div class="photo" id="photo"><img src="photo.jpg" alt="Apcheir Ayeh" onerror="this.style.display='none';this.parentNode.classList.add('noimg')"><div class="tint"></div></div>
+</section>
+
+<section class="about" id="about">
+  <h2 class="title">About <span>Me</span></h2>
+  <div class="about-box">
+    <div>
+      <p>I'm <b>Abshir Aadan Maxamuud</b> (Apcheir Ayeh), a motivated ICT graduate from Admas University with hands-on experience in media production, computer technical support, CCTV operations, system administration, networking, graphic design and digital marketing.</p>
+      <p>I have supported technology and media operations at Adal Medical University and Adal International Hospital, and I'm a reliable team player with strong communication, problem-solving and customer-service skills.</p>
+      <a href="cv.pdf" class="btn fill" download>Download CV</a>
+    </div>
+    <div class="skills">
+      <div class="bar"><div><span>Programming & Development</span><span>85%</span></div><div class="track"><i data-w="85"></i></div></div><div class="bar"><div><span>System Administration</span><span>85%</span></div><div class="track"><i data-w="85"></i></div></div><div class="bar"><div><span>Cybersecurity</span><span>80%</span></div><div class="track"><i data-w="80"></i></div></div><div class="bar"><div><span>Media Production & Video Editing</span><span>90%</span></div><div class="track"><i data-w="90"></i></div></div><div class="bar"><div><span>Digital Marketing</span><span>80%</span></div><div class="track"><i data-w="80"></i></div></div><div class="bar"><div><span>Computer Technical Support</span><span>90%</span></div><div class="track"><i data-w="90"></i></div></div>
+    </div>
+  </div>
+  <h3 class="sub">Languages</h3>
+  <div class="chips"><span>Somali — Excellent</span><span>English — Very good</span><span>Arabic — Very good</span></div>
+</section>
+
+<section id="services">
+  <h2 class="title">My <span>Services</span></h2>
+  <div class="cards">
+    <div class="card"><div class="ico">&lt;/&gt;</div><h3>Web Development</h3><p>Responsive websites and applications built with HTML, CSS and JavaScript.</p></div>
+    <div class="card"><div class="ico">&#128274;</div><h3>Cybersecurity &amp; Systems</h3><p>System administration, networking, ethical security concepts and reliable ICT operations.</p></div>
+    <div class="card"><div class="ico">&#127909;</div><h3>Media &amp; Design</h3><p>Photography, video editing, graphic design and social-media content creation.</p></div>
+    <div class="card"><div class="ico">&#128249;</div><h3>CCTV &amp; Technical Support</h3><p>CCTV installation, monitoring, troubleshooting and computer hardware/software support.</p></div>
+    <div class="card"><div class="ico">&#128200;</div><h3>Digital Marketing</h3><p>Google Ads Search and digital marketing to help your business reach more customers.</p></div>
+  </div>
+</section>
+
+<section class="about" id="experience">
+  <h2 class="title">My <span>Experience</span></h2>
+  <div class="timeline">
+    <div class="tl"><h3>IMAN JET — Media &amp; IT Support</h3><div class="when">December 2025 – March 2026</div><ul><li>Supported media and digital-content activities and computer-related technical tasks.</li><li>Prepared, organized and maintained digital media materials for professional use.</li><li>Responded to day-to-day user needs with practical technical support.</li></ul></div>
+    <div class="tl"><h3>Adal Medical University &amp; Adal International Hospital</h3><div class="when">Media &amp; IT Support / Computer Technician / CCTV Technician · December 2022 – December 2025</div><ul><li>Supported daily media and digital-content operations for the university and hospital.</li><li>Hardware/software troubleshooting and routine system maintenance.</li><li>CCTV monitoring, basic troubleshooting and operational checks.</li><li>Photography, video production, editing and social-media content.</li><li>Worked with academic, administrative and hospital teams.</li></ul></div>
+    <div class="tl"><h3>Garaad Technology &amp; System Design — System Administrator</h3><div class="when">November 2020 – August 2022</div><ul><li>Worked with clients, contractors and agencies on system-design and technology projects.</li><li>Software/system development, testing, fault finding and bug diagnosis.</li><li>Prepared documentation and manuals; supported user training.</li><li>Contributed to application flow, database architecture, interface and report design.</li></ul></div>
+  </div>
+  <h3 class="sub">Education</h3>
+  <div class="timeline">
+    <div class="tl"><h3>Bachelor of Information &amp; Communication Technology (ICT)</h3><div class="when">Admas University, Hargeisa · 2019 – 2022</div><p>GPA: 3.78 / 4.0</p></div>
+    <div class="tl"><h3>East Africa Secondary School, Borama</h3><div class="when">2015 – 2019</div></div>
+    <div class="tl"><h3>Alqudus Primary School &amp; Alqsa School, Borama</h3><div class="when">2007 – 2015</div></div>
+  </div>
+  <h3 class="sub">Training &amp; Online Education</h3>
+  <div class="chips"><span>WASH Program</span><span>CyberSecurity Program</span><span>Ethical Hacking Program</span><span>Cisco Packet Tracer</span><span>Linux Program</span><span>Cyber Security — Hurbad Institution</span><span>Ethical Hacking — Sola Portal</span></div>
+  <h3 class="sub">Seminars</h3>
+  <div class="chips"><span>Resolution of Land Disputes in Borama District, 2026</span><span>National Election Commission of Somaliland, 2022</span><span>WADANI Party Election Observer, 2024</span></div>
+</section>
+
+<section id="portfolio">
+  <h2 class="title">Latest <span>Projects</span></h2>
+  <div class="projects">
+    <div class="proj"><div class="thumb grid4"><img src="images/profile-1-home.png" alt="Profile home"><img src="images/profile-2-about.png" alt="Profile about"><img src="images/profile-3-services.png" alt="Profile services"><img src="images/profile-4-contact.png" alt="Profile contact"></div><div><h3>My Profile</h3><p>Personal portfolio website with Home, About Me, Services and Contact sections, built with HTML, CSS and JavaScript.</p></div></div>
+    <div class="proj"><div class="thumb"><img src="images/crime-records.png" alt="Crime Records Management"></div><div><h3>Crime Records Management</h3><p>Crime records management system for Borama Police Station: staff management, case records and admin dashboard.</p></div></div>
+    <div class="proj"><div class="thumb"><img src="images/money-transfer-website.png" alt="Money transfer website"></div><div><h3>Website Project</h3><p>International money transfer website with a clean landing page and live exchange-rate calculator.</p></div></div>
+  </div>
+</section>
+
+<section class="about" id="contact">
+  <h2 class="title">Contact <span>Me</span></h2>
+  <div class="contact-info">
+    <div><b>Phone</b><a href="tel:+2520634705547">063 4705547</a></div>
+    <div><b>Email</b><a href="mailto:adamabshir07@gmail.com">adamabshir07@gmail.com</a></div>
+    <div><b>Location</b>Borama, Awdal, Somaliland</div>
+  </div>
+  <form id="form">
+    <input type="text" id="name" placeholder="Full name" required>
+    <input type="email" id="email" placeholder="Email address" required>
+    <textarea id="message" placeholder="Your message" required></textarea>
+    <button class="btn fill" type="submit">Send Message</button>
+    <p id="msg" role="status"></p>
+  </form>
+</section>
+
+<footer><div class="socials"><a href="https://www.instagram.com/apcheirr?igsh=ZWxwam51b3B1YWNw" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5zm0 2a3 3 0 00-3 3v10a3 3 0 003 3h10a3 3 0 003-3V7a3 3 0 00-3-3H7zm5 3.5A4.5 4.5 0 1112 16.5 4.5 4.5 0 0112 7.5zm0 2A2.5 2.5 0 1012 14.5 2.5 2.5 0 0012 9.5zM17.3 6a1.1 1.1 0 110 2.2 1.1 1.1 0 010-2.2z"/></svg></a><a href="https://www.facebook.com/apcheirayeh/" target="_blank" rel="noopener" aria-label="Facebook" title="Facebook"><svg viewBox="0 0 24 24"><path d="M14 8V6.5c0-.7.2-1 1.1-1H17V2h-2.8C11.3 2 10 3.6 10 6v2H8v3.5h2V22h4v-10.5h2.8L17 8h-3z"/></svg></a><a href="https://www.youtube.com/@ayehhistory" target="_blank" rel="noopener" aria-label="YouTube - Ayeh History" title="YouTube - Ayeh History"><svg viewBox="0 0 24 24"><path d="M22 8.2s-.2-1.5-.8-2.1c-.8-.8-1.6-.8-2-.9C16.400 5 12 5 12 5s-4.400 0-7.200.2c-.4.100-1.200.1-2 .9C2.200 6.700 2 8.200 2 8.200S1.800 10 1.800 11.700v1.600c0 1.700.2 3.500.2 3.500s.2 1.500.8 2.100c.8.800 1.800.8 2.200.9 1.600.2 7 .2 7 .2s4.400 0 7.200-.2c.4-.1 1.200-.1 2-.9.6-.6.8-2.100.8-2.100s.2-1.800.2-3.500v-1.600C22.200 10 22 8.200 22 8.200zM10 15V9l5.200 3-5.200 3z"/></svg></a><a href="https://www.youtube.com/@ayehmedia" target="_blank" rel="noopener" aria-label="YouTube - Ayeh Media" title="YouTube - Ayeh Media"><svg viewBox="0 0 24 24"><path d="M22 8.2s-.2-1.5-.8-2.1c-.8-.8-1.6-.8-2-.9C16.400 5 12 5 12 5s-4.400 0-7.200.2c-.4.100-1.200.1-2 .9C2.200 6.700 2 8.200 2 8.200S1.800 10 1.800 11.700v1.600c0 1.700.2 3.500.2 3.500s.2 1.500.8 2.100c.8.800 1.800.8 2.200.9 1.600.2 7 .2 7 .2s4.400 0 7.200-.2c.4-.1 1.200-.1 2-.9.6-.6.8-2.100.8-2.100s.2-1.800.2-3.500v-1.600C22.200 10 22 8.200 22 8.200zM10 15V9l5.200 3-5.200 3z"/></svg></a><a href="https://www.tiktok.com/@ayehmedia" target="_blank" rel="noopener" aria-label="TikTok" title="TikTok"><svg viewBox="0 0 24 24"><path d="M16.600 2h-3.200v13.200a2.800 2.800 0 11-2.800-2.800c.3 0 .6 0 .8.100V9.200a6 6 0 105.200 5.900V8.600a7.300 7.300 0 004.200 1.300V6.700a4.300 4.300 0 01-4.200-4.700z"/></svg></a></div>&copy; <span id="yr"></span> Apcheir Ayeh. All rights reserved.</footer>
+
+<script>
+// Typing effect
+const words=["Frontend Developer","IT & Cybersecurity Specialist","Digital Media Creator"];
+let w=0,c=0,del=false;const el=document.getElementById('typed');
+(function type(){
+  const word=words[w];
+  el.textContent=word.slice(0,c);
+  if(!del&&c===word.length){del=true;return setTimeout(type,1400)}
+  if(del&&c===0){del=false;w=(w+1)%words.length}
+  c+=del?-1:1;
+  setTimeout(type,del?45:95);
+})();
+
+// Mobile menu
+const nav=document.getElementById('nav');
+document.getElementById('menu').onclick=()=>nav.classList.toggle('open');
+nav.querySelectorAll('a').forEach(a=>a.onclick=()=>nav.classList.remove('open'));
+
+// Active link on scroll
+const links=[...nav.querySelectorAll('a')];
+const secs=links.map(a=>document.querySelector(a.getAttribute('href')));
+addEventListener('scroll',()=>{
+  const y=scrollY+140;let i=0;
+  secs.forEach((s,k)=>{if(s.offsetTop<=y)i=k});
+  links.forEach((a,k)=>a.classList.toggle('active',k===i));
+});
+
+// Skill bars animate when visible
+const io=new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting){e.target.style.width=e.target.dataset.w+'%'}
+}),{threshold:.4});
+document.querySelectorAll('.track i').forEach(i=>io.observe(i));
+
+// Contact form -> opens email app (beddel email-kaaga)
+document.getElementById('form').addEventListener('submit',e=>{
+  e.preventDefault();
+  const to="adamabshir07@gmail.com";
+  const n=encodeURIComponent(document.getElementById('name').value);
+  const m=encodeURIComponent(document.getElementById('message').value+"\n\nFrom: "+document.getElementById('email').value);
+  location.href=`mailto:${to}?subject=Portfolio message from ${n}&body=${m}`;
+  document.getElementById('msg').textContent="Thanks! Your email app is opening...";
+});
+document.getElementById('yr').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
